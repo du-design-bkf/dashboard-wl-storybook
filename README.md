@@ -1,32 +1,47 @@
-# React + TypeScript + Vite
+# Dashboard White-Label - Storybook
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Catálogo de componentes de UI do Dashboard White-Label (BKF), construído com [Shadcn/ui](https://ui.shadcn.com) sobre Radix e documentado no [Storybook](https://storybook.js.org).
 
-Currently, two official plugins are available:
+Referência visual/UX: protótipo Figma `DASHBOARD-WHITE-LABEL-BKF` (Reactions).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- [Vite](https://vite.dev) + React 19 + TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com) (CSS-first, tema em `src/index.css`)
+- [Shadcn/ui](https://ui.shadcn.com) (preset `radix-nova`, ícones Lucide)
+- [Storybook 10](https://storybook.js.org) com `@storybook/addon-vitest` (testes de interação rodam de verdade em navegador via Playwright, não é mock)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Ver decisões de stack em `docs/decisions/`.
 
-## Expanding the Oxlint configuration
+## Rodando localmente
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run storybook          # abre o catálogo em http://localhost:6006
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Outros comandos:
+
+```bash
+npm run dev                # app Vite isolado (não é o entregável principal)
+npm run build-storybook    # build estático do Storybook (o que vai pro GitHub Pages)
+npm run test-storybook     # roda os testes de interação (play functions) via Vitest
+npm run lint
+```
+
+## Como adicionar um componente novo
+
+1. Instalar o componente via Shadcn (gera em `src/components/ui/`):
+   ```bash
+   npx shadcn@latest add <nome-do-componente>
+   ```
+2. Criar `<nome>.stories.tsx` do lado do componente. Use `src/components/ui/button.stories.tsx` como modelo:
+   - uma story por variante visual (`args` diferentes)
+   - `tags: ['autodocs']` pra gerar a página de docs automática
+   - pelo menos uma story com `play` function testando um comportamento real (clique, digitação, etc), usando `storybook/test` (`within`, `userEvent`, `expect`)
+3. Rodar `npm run storybook` e conferir visualmente + a aba **Interactions** da story com `play`.
+4. Rodar `npm run test-storybook` pra confirmar que o teste passa fora do modo interativo (é o mesmo teste que roda no CI).
+
+## Deploy
+
+Push em `main` builda o Storybook e publica no GitHub Pages via GitHub Actions (`.github/workflows/deploy-storybook.yml`).
