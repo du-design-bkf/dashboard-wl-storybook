@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 import { withThemeByClassName } from '@storybook/addon-themes'
+import { TooltipProvider } from '../src/components/ui/tooltip'
 import '../src/index.css'
 
 const preview: Preview = {
@@ -26,6 +27,11 @@ const preview: Preview = {
       },
       defaultTheme: 'light',
     }),
+    (Story) => (
+      <TooltipProvider>
+        <Story />
+      </TooltipProvider>
+    ),
   ],
 };
 
