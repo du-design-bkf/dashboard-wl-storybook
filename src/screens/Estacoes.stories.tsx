@@ -10,11 +10,11 @@ import { EstacoesScreen, mockStations } from './Estacoes'
  * entidade própria: são os contadores de Dispositivo vinculados à estação.
  *
  * Não existe section confiável de "Estações" no Figma pra clonar visualmente
- * (node antigo `87:3448` foi dissolvido, card #12147 fechado por
+ * (node antigo 87:3448 foi dissolvido, card #12147 fechado por
  * formalização retroativa sem produção real) - esta tela usa como
- * referência de shell os módulos irmãos que têm Figma real (Veículos
- * #12091, Dispositivos #12092): mesma casca de listagem + Drawer + modal de
- * confirmação.
+ * referência de shell os módulos irmãos que têm Figma real (Veículos e
+ * Dispositivos, cards #12091 e #12092): mesma casca de listagem, Drawer e
+ * modal de confirmação.
  */
 const meta = {
   title: 'Screens/Estações',
