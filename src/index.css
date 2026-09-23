@@ -46,6 +46,14 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --color-status-ok-ink: var(--status-ok-ink);
+  --color-status-ok-soft: var(--status-ok-soft);
+  --color-status-busy-ink: var(--status-busy-ink);
+  --color-status-busy-soft: var(--status-busy-soft);
+  --color-status-critical-ink: var(--status-critical-ink);
+  --color-status-critical-soft: var(--status-critical-soft);
+  --color-status-inactive-ink: var(--status-inactive-ink);
+  --color-status-inactive-soft: var(--status-inactive-soft);
 }
 
 :root {
@@ -81,6 +89,14 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --status-ok-ink: #147658;
+  --status-ok-soft: #daf1e9;
+  --status-busy-ink: #80651d;
+  --status-busy-soft: #f6ecd2;
+  --status-critical-ink: #b7302e;
+  --status-critical-soft: rgba(208, 59, 59, 0.1);
+  --status-inactive-ink: #6e6e6e;
+  --status-inactive-soft: #efefef;
 }
 
 .dark {
@@ -115,6 +131,14 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --status-ok-ink: #69d3b3;
+  --status-ok-soft: rgba(20, 118, 88, 0.18);
+  --status-busy-ink: #dec47c;
+  --status-busy-soft: rgba(128, 101, 29, 0.18);
+  --status-critical-ink: #f08a7a;
+  --status-critical-soft: rgba(208, 59, 59, 0.18);
+  --status-inactive-ink: #a3a3a3;
+  --status-inactive-soft: #2a2a2a;
 }
 
 @layer base {
