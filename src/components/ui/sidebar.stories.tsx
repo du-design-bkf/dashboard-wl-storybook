@@ -36,13 +36,13 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-function DashboardShell() {
+function DashboardShell({ defaultOpen = true }: { defaultOpen?: boolean }) {
   return (
     <div className="min-h-svh w-full bg-[#dedede]">
-      <SidebarProvider>
+      <SidebarProvider defaultOpen={defaultOpen}>
         <Sidebar collapsible="icon">
           <SidebarHeader>
-            <p className="truncate px-2 text-xs font-bold tracking-wide text-sidebar-muted uppercase">
+            <p className="truncate px-2 text-xs font-bold tracking-wide text-sidebar-muted uppercase group-data-[collapsible=icon]:hidden">
               Dashboard White-Label
             </p>
           </SidebarHeader>
@@ -100,6 +100,16 @@ function DashboardShell() {
 
 export const Default: Story = {
   render: () => <DashboardShell />,
+}
+
+/**
+ * Estado recolhido (`estado=Recolhido`, node `79:126` do `side-bar-2.0`):
+ * trilha de 80px, raio menor (18px contra 28px expandido), itens viram
+ * ícone centralizado sem rótulo, e o rótulo de texto de cada seção vira um
+ * divisor.
+ */
+export const Collapsed: Story = {
+  render: () => <DashboardShell defaultOpen={false} />,
 }
 
 /**
