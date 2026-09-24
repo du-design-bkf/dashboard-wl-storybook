@@ -26,9 +26,12 @@ import { PanelLeftIcon } from "lucide-react"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
-const SIDEBAR_WIDTH = "16rem"
+// Cartão real da side-bar-2.0 (Figma) tem 240px expandido / 80px recolhido -
+// a largura aqui é maior porque inclui o gutter p-4 (16px de cada lado) que
+// separa o cartão da borda do viewport, ver sidebar-container mais abaixo.
+const SIDEBAR_WIDTH = "17rem" // 240px de cartão + 32px de gutter
 const SIDEBAR_WIDTH_MOBILE = "18rem"
-const SIDEBAR_WIDTH_ICON = "5rem"
+const SIDEBAR_WIDTH_ICON = "7rem" // 80px de cartão + 32px de gutter
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
 type SidebarContextProps = {
