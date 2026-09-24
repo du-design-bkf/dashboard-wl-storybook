@@ -38,58 +38,63 @@ type Story = StoryObj<typeof meta>
 
 function DashboardShell() {
   return (
-    <SidebarProvider>
-      <Sidebar collapsible="icon">
-        <SidebarHeader>
-          <p className="truncate px-2 text-sm font-semibold">
-            Dashboard White-Label
-          </p>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Navegação</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton isActive tooltip="Visão geral">
-                    <LayoutDashboard />
-                    <span>Visão geral</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton tooltip="Estações">
-                    <MapPin />
-                    <span>Estações</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton tooltip="Usuários">
-                    <Users />
-                    <span>Usuários</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Configurações">
-                <Settings />
-                <span>Configurações</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarFooter>
-      </Sidebar>
-      <SidebarInset>
-        <header className="flex h-12 items-center gap-2 border-b px-2">
-          <SidebarTrigger />
-          <p className="text-sm text-muted-foreground">Conteúdo da página</p>
-        </header>
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="min-h-svh w-full bg-[#dedede]">
+      <SidebarProvider>
+        <Sidebar collapsible="icon">
+          <SidebarHeader>
+            <p className="truncate px-2 text-xs font-bold tracking-wide text-sidebar-muted uppercase">
+              Dashboard White-Label
+            </p>
+          </SidebarHeader>
+          <SidebarContent>
+            {/* Item avulso: sem SidebarGroup/label, igual ao "Visão geral" do side-bar-2.0 */}
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton isActive tooltip="Visão geral">
+                  <LayoutDashboard />
+                  <span>Visão geral</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+            <SidebarGroup>
+              <SidebarGroupLabel>Operação</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Estações">
+                      <MapPin />
+                      <span>Estações</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Usuários">
+                      <Users />
+                      <span>Usuários</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+          <SidebarFooter>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Configurações">
+                  <Settings />
+                  <span>Configurações</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarFooter>
+        </Sidebar>
+        <SidebarInset>
+          <header className="flex h-12 items-center gap-2 border-b px-2">
+            <SidebarTrigger />
+            <p className="text-sm text-muted-foreground">Conteúdo da página</p>
+          </header>
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
   )
 }
 
